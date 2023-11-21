@@ -1,1 +1,52 @@
-/* Add your own styles */
+header {
+    display: flex;
+    background-color: dimgray;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-bottom: 20px;
+    padding: 10px; 
+}
+
+header img {
+    height: 100px; 
+    width: 100px; 
+    border-radius: 50%;
+    margin-right: 10px; 
+}
+
+main {
+    text-align: center;
+}
+
+main button {
+    background-color: aqua;
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    margin-top: 20px; 
+    cursor: pointer; 
+}
+
+button {
+    width: 100px;
+    height: 40px; 
+    margin: 5px; 
+    cursor: pointer; 
+}
+
+table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #ddd;
+    padding: 12px;
+}
+
+tr:nth-child(even) {
+    background-color: bisque;
+}

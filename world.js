@@ -1,42 +1,44 @@
-window.onload = function(){
-    var country;
-    var rows;
+window.addEventListener("load", function (e){
+    var lookupBtn = document.querySelector("button");
+    var citiesBtn = document.getElementById("city");
+    const result = document.querySelector("#result");
+    const input = document.querySelector("input");
 
-    document.getElementById("lookup").addEventListener("click", function(event){
-        event.preventDefault();
+    lookupBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        
+        // const result = document.querySelector("#result");
+        // const input = document.querySelector("input");
 
-        country = document.getElementById("country").value.trim().replace(/(<([^>]+)>)/gi, "");
+        //let country = input.value.trim();
+        let url = 'world.php?country=' + input + '&lookup=countries';
 
-        // fetch("world.php?country="+country) 
-        //     .then(response => response.text())
-        //     .then(data => {
-        //         document.getElementById("result").innerHTML = data;
-        //     })
+        fetch(url)
+            .then(response => {
+                return response.text();
+            })
 
-        const xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                document.getElementById("result").innerHTML = this.responseText;
-            }
-        }
-        xhttp.open("GET", "world.php?country="+country);
-        xhttp.send();
+            .then(data => {
+                result.innerHTML = data;
+                console.log(data);
+            })
+
     });
 
-    document.getElementById("lookupCity").addEventListener("click", function(event){
-        event.preventDefault();
+    citiesBtn.addEventListener('click', function (e) {
+        e.preventDefault();
 
-        country = document.getElementById("country").value.trim().replace(/(<([^>]+)>)/gi, "");
+        let url = 'world.php?country=' + input + '&lookup=cities';
 
-        if(country !== ""){
-            const xhttp2 = new XMLHttpRequest();
-            xhttp2.onreadystatechange = function(){
-                if(this.readyState == 4 && this.status == 200){
-                    document.getElementById("result").innerHTML = this.responseText;
-                }
-            }
-            xhttp2.open("GET", "world.php?country="+country+"&lookup=cities");
-            xhttp2.send();
-        }
-    })
-}
+        fetch(url)
+            .then(response => {
+                return response.text();
+            })
+
+            .then(data => {
+                result.innerHTML = data;
+                console.log(data);
+            })
+
+    });
+})
